@@ -22,7 +22,7 @@
 
 body {
    margin: 0;
-   padding: 66px 0 0 0;
+   padding: 80px 0 0 0;
    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
    background-color: #f8f8ff;
 }
@@ -35,13 +35,18 @@ a {
 /*ヘッダー*/
 
 header {
-   padding: 5px 3% 5px;
+   padding: 5px 10% 5px;
    position: fixed;
    top: 0;
    width: 100%;
    background-color: #fff;
    display: flex;
    align-items: center;
+   
+}
+
+.blue{
+  color: #19b5d1;
 }
 
 
@@ -97,4 +102,91 @@ footer {
 .footer-text {
   color: #6c6b6b;
   font-size: 10px;
+}
+
+
+/*画像を丸く*/
+.circle_img img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width:  180px;       /* ※縦横を同値に */
+  height: 180px;  
+}
+
+
+/*タブ機能*/
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #FFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+
+.box-show {
+  display: block;
+}
+
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+/*基本操作*/
+
+/*上下中央寄せ*/
+.xy_center{
+  justify-content: center;
+  text-align: center;
+}
+
+.row{
+  flex: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.btn a{
+  margin: 5px;
+}
+
+.text_right{
+  text-align: right;
+}
+
+.text_left{
+  text-align: left;
+}
+
+.border_btn{
+  border-radius: 100vh;
+  border: 1px solid;
+  padding: 12px;
+}
+
+.border_bottom{
+  border-bottom: 1px solid;
+  border-color: #d3d3d3;
+}
+
+.border_top{
+  border-top: 1px solid;
+  border-color: #d3d3d3;
+}
+
+.pb_30px{
+  padding-bottom: 30px;
 }

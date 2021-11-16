@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -40,8 +41,11 @@ class UsersController < ApplicationController
          @user.update(icon_image_id: "#{@user.id}.jpg" )
       end
       
+      flash[:success] = "保存が完了しました。"
+      redirect_to user_path(@user)
     else
-      
+      flash[:danger] = "保存が失敗しました。"
+      render 'edit'
     end
   end
 

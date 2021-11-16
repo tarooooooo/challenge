@@ -1,43 +1,43 @@
 <header class="shadow-sm">
   <div>
-    <%= link_to image_tag("no_image.jpg", width: 50), root_path, class:"navbar-brand" %>
+    <%= link_to image_tag("yakusoku.png", width: 100), root_path, class:"navbar-brand" %>
   </div>
   <nav class="navbar">
     <div class = "nav-list">
       <% if logged_in? %>
         <div class="social">
-          <%= link_to '予定を作る', root_path, class: '' %>
+          <%= link_to '予定を作る', root_path, class: 'blue' %>
         </div>
         
         <div class="social">
-          <%= link_to '予定を探す', root_path, class: '' %>
+          <%= link_to '予定を探す', root_path, class: 'blue' %>
         </div>
         
         <div class="social">
-          <%= link_to 'マイページ', user_path(current_user), class: '' %>
+          <%= link_to 'マイページ', user_path(current_user), class: 'blue' %>
         </div>
         
         <div class="social">
-          <%= link_to '通知', root_path, class: '' %>
+          <%= link_to '通知', root_path, class: 'blue' %>
         </div>
         
         <div class="social">
-          <%= link_to 'ログアウト', logout_path, method: :delete, class: '' %>
+          <%= link_to 'ログアウト', logout_path, method: :delete, class: 'blue' %>
         </div>
         
       <% else %>
       
         <div class="social">
-          <%= link_to 'About', root_path, class: '' %>
+          <%= link_to 'About', root_path, class: 'blue' %>
         </div>
       
      
         <div class="social">
-          <%= link_to '新規登録', new_user_path, class: 'nav-link text-dark' %>
+          <%= link_to '新規登録', new_user_path, class: 'blue' %>
         </div>
   
         <div class="social">
-          <%= link_to 'ログイン', login_path, class: 'nav-link text-dark' %>
+          <%= link_to 'ログイン', login_path, class: 'blue' %>
         </div>
         
       <% end %>

@@ -8,6 +8,7 @@ module SessionsHelper
     if session[:user_id]
       if @current_user.nil?
         @current_user = User.find_by(id: session[:user_id])
+        return @current_user
       else
         return @current_user
       end
