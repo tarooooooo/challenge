@@ -4,9 +4,9 @@
 
 <%= form_with model: @user, local: true do |f| %>
 
-  <div class="">
-    <%= f.label :アイコン画像 %><br />
-    <%= f.text_field :icon_image, value: @not_image %>
+  <div class="field">
+    <%= f.label :icon_image %><br/>
+    <%= f.file_field :icon_image %>
   </div>
 
   <div class="field">

@@ -6,13 +6,20 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @not_image = "no_image.jpg"
   end
 
   def create
     @user = User.new(user_params)
     @user.deleted = false
     if @user.save
+      
+      if params[:user][:icon_image]
+         File.binwrite("public/user_images/#{@user.id}.jpg", params[:user][:icon_image].read)
+         @user.update(icon_image_id: "#{@user.id}.jpg" )
+      else
+         @user.update(icon_image_id: "no_image.jpg" )
+      end
+      
       log_in(@user)
       flash[:success] = "登録が完了しました！"
       redirect_to user_path(@user)
@@ -25,6 +32,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      
+      if params[:user][:icon_image]
+         File.binwrite("public/user_images/#{@user.id}.jpg", params[:user][:icon_image].read)
+         @user.update(icon_image_id: "#{@user.id}.jpg" )
+      end
+      
+    else
+      
+    end
   end
 
   def destroy
