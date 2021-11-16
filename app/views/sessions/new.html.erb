@@ -1,0 +1,23 @@
+
+<div class="login-form form">
+  <h4 class ="login">ログイン</h4>
+
+  <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "ログイン" %>
+    </div>
+  <% end %>
+  
+  <p><%= link_to "新規登録はコチラ >>" , new_user_path %></p>
+
+</div>
