@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.deleted = false
     if @user.save
+      log_in(@user)
       flash[:success] = "登録が完了しました！"
       redirect_to user_path(@user)
     else
