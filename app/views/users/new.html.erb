@@ -1,45 +1,46 @@
 <%= render "shared/error_messages", user: @user %>
 
-<h2>新規登録</h2>
+<div class="xy_center">
+  <p class="title">新規登録</p>
 
-<%= form_with model: @user, local: true do |f| %>
+  <%= form_with model: @user, local: true do |f| %>
 
-  <div class="field">
-    <%= f.label :icon_image %><br/>
-    <%= f.file_field :icon_image %>
-  </div>
+    <div class="field">
+      <%= f.label :アイコン画像 %><br/>
+      <%= f.file_field :icon_image %>
+    </div>
 
-  <div class="field">
-    <%= f.label :ニックネーム %><br />
-    <%= f.text_field :nickname, autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :ニックネーム %><br />
+      <%= f.text_field :nickname, autofocus: true, style:"width: 300px;" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :紹介文%><br />
-    <%= f.text_field :introduction, autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :紹介文%><br />
+      <%= f.text_area :introduction, autofocus: true %>
+    </div>
 
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :メールアドレス %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" , style:"width: 300px;" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :パスワード %><br />
+      <%= f.password_field :password, autocomplete: "new-password", style:"width: 300px;" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :パスワード確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  
-  <%= f.hidden_field :deleted, value: false %>
+    <div class="field">
+      <%= f.label :パスワード確認 %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", style:"width: 300px;" %>
+    </div>
 
-  <div class="">
-    <%= f.submit "新規登録" %>
-  </div>
-  
-  
-<% end %>
+    <%= f.hidden_field :deleted, value: false %>
+
+    <div class="">
+      <%= f.submit "新規登録" , class:"btn_blue mt_30px" %>
+    </div>
+
+  <% end %>
+</div>
