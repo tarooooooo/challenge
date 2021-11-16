@@ -8,7 +8,6 @@ class User < ApplicationRecord
                       format: { with: VALID_EMAIL_REGEX }
     validates :nickname, length: { maximum: 50 }
     validates :password, presence: true, length: { minimum: 6 }
-    validates :deleted
     validates :introduction, length: { maximum: 300 }
   end
 end

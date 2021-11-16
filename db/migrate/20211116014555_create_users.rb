@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, null: false
       t.string :password_digest, null: false
       t.string :remember_token
-      t.boolean :deleted, null: false, default: false
+      t.boolean :deleted, default: false, null: false
       t.text :introduction, null: false
       t.string :icon_image_id
 
