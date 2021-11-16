@@ -1,5 +1,55 @@
-<h1>
-  <img src="/user_images/<%= @user.icon_image_id %>" width="200px" />
-  <%= @user.nickname %>
-</h1>
+<div class="user_show xy_center">
+  <div class="text_right">
+    <%= link_to "変更する", edit_user_path(@user) , class: "border_btn" if current_user.id.to_s == params[:id] %>
+  </div>
+  <!--アイコン画像-->
+  <div class="circle_img text-center ">
+    <img src="/user_images/<%= @user.icon_image_id %>" width="200px" />
+  </div>
 
+  <!--名前-->
+  <p class="xy_center">
+    <%= current_user.nickname %>さん
+  </p>
+
+  <div class="row btn pb_30px">
+    <%= link_to "フォロー" , root_path %>
+    <%= link_to "フォロワー" , root_path %>
+  </div>
+
+  <div class="box border_bottom border_top text_left">
+    <p>【自己紹介】</p>
+    <%= @user.introduction %>
+  </div>
+
+  <% if params[:id] == current_user.id.to_s %>
+
+    <div class="tab-list list-unstyled row">
+      <p class="tab tab-active">
+        これからの約束
+      </p>
+      <p class="tab">
+        これまでの約束
+      </p>
+      <p class="tab">
+        いいねした約束
+      </p>
+    </div>
+
+
+    <div class="tabbox-contents">
+      <div class="tabbox box-show">
+        <%= link_to "投稿", root_path %>
+      </div>
+      <div class="tabbox">
+        <%= link_to "投稿2", root_path %>
+      </div>
+      <div class="tabbox">
+        <%= link_to "投稿3", root_path %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>

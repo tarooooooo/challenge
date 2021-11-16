@@ -1,2 +1,27 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= render "shared/error_messages", user: @user %>
+
+<h2>ユーザー編集</h2>
+
+<%= form_with model: @user, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :icon_image %><br/>
+    <%= f.file_field :icon_image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ニックネーム %><br />
+    <%= f.text_field :nickname, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :紹介文%><br />
+    <%= f.text_field :introduction, autofocus: true %>
+  </div>
+
+  <div class="">
+    <%= f.submit "保存" %>
+  </div>
+  
+  
+<% end %>
