@@ -16,6 +16,51 @@
 
 /* mixins, variables, etc. */
 
+*{
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   padding: 66px 0 0 0;
+   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   background-color: #f8f8ff;
+}
+
+a {	
+   text-decoration: none;
+   color: #4b4b4b;
+}
+
+/*ヘッダー*/
+
+header {
+   padding: 5px 3% 5px;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: #fff;
+   display: flex;
+   align-items: center;
+}
+
+
+.nav-list{
+   list-style: none;
+   margin: 0;
+   display: flex;
+}
+
+.social{
+   margin: 0 0 0 15px;
+   font-size: 14px;
+}
+
+nav {
+   margin: 0 0 0 auto;
+}
+
+/*フラッシュメッセージ*/
 
 .alert-success{
   color: green;
@@ -29,6 +74,14 @@
   /*pink*/
 }
 
+.alert-standard{
+  color: #708090;
+  background-color: #f8f8ff;
+}
+
+.alert{
+  padding: 10px;
+}
 
 /*フッター*/
 footer {
