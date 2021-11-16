@@ -4,7 +4,11 @@
   </div>
   <!--アイコン画像-->
   <div class="circle_img text-center ">
-    <img src="/user_images/<%= @user.icon_image_id %>" width="200px" />
+    <% if !current_user.icon_image_id.blank? %>
+      <img src="/user_images/<%= @user.icon_image_id %>" width="200px" />
+    <% else %>
+      <img src="/user_images/no_image.jpg" width="200px" />
+    <% end %>
   </div>
 
   <!--名前-->
