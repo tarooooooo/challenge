@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.deleted = false
     if @user.save
-      flash[:success] = "登録が完了しました"
+      flash[:success] = "登録が完了しました！"
       redirect_to user_path(@user)
     else
       render new_user_path
@@ -28,9 +28,9 @@ class UsersController < ApplicationController
 
   def destroy
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(
       :nickname,
