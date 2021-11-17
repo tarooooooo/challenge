@@ -1,0 +1,34 @@
+<div class="card_box">
+    
+  <li class="card7">
+    <div class="card-title">
+  
+      <div class="card__image-holder">
+        <img class="card__image" src="/assets/<%= post.genre.image_id %>" alt="アイキャッチ画像">
+      </div>
+  
+      <a href="#" class="toggle-info btn7">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <p class="card_timecategory">
+        <time class="pubdate entry-time dfont" itemprop="datePublished">
+          <%= post.meeting_at.strftime("%Y-%m-%d") %>
+        </time>
+          <p>
+            <%= post.meeting_at.strftime("%H:%M") %>〜の約束
+          </p>
+      </p>
+      <p class="card_htitle">
+        <%= post.title %>
+      </p>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        <%= post.body %>
+      </div>
+    </div>
+  </li>
+  <div class="link_box flex">
+    <%= link_to "約束の詳細" , post_path(post) , class:"btn7" %>
+  </div>

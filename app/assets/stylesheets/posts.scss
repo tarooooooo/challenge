@@ -49,6 +49,7 @@ li.card7 {
     cursor: pointer;
     margin: 5px 0 5px 25px;
 }
+
 li.card7 img {
     width: 100%;
 }
@@ -57,6 +58,12 @@ li.card7 .card__image-holder {
     height: 0;
     padding-bottom: 57%;
     overflow: hidden;
+}
+li.card7 .card__image-holder img {
+    transition: all 0.1s 0s ease-in;
+}
+li.card7:hover > .card__image-holder img {
+    transform: scale(1.05);
 }
 
 li.card7 div.card-title {
@@ -212,4 +219,8 @@ li.card7 {
 
 .posts_box{
   margin: 100px 0;
+}
+
+.flex{
+
 }
