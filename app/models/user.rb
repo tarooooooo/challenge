@@ -10,4 +10,6 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     validates :introduction, length: { maximum: 800 }
   end
+  
+  has_many :posts
 end

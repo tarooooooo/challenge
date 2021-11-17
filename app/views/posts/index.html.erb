@@ -1,2 +1,26 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="posts_box xy_center">
+  <ul class="cards7">
+  <!-- card -->
+  <% @posts.each do |post| %>
+    <li class="card7">
+      <div class="card-title">
+         <%= link_to post_path(post), class:"toggle-info btn7" do %>
+        
+          <span class="left"></span>
+          <span class="right"></span>
+
+        <% end %>
+        <p class="card_timecategory"><time class="pubdate entry-time dfont" itemprop="datePublished" datetime="2021-10-16">2021年10月16日</time></p>
+        <p class="card_htitle"><%= post.title %></p>
+      </div>
+      <div class="card-flap flap1">
+        <div class="card-description">ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</div>
+        <div class="card-flap flap2">
+          <div class="card-actions"> <a href="#" class="btn7">記事を見る</a> </div>
+        </div>
+      </div>
+    </li><br />
+  <% end %>
+  </ul>
+
+</div>
