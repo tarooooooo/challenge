@@ -42,7 +42,7 @@ header {
    background-color: #fff;
    display: flex;
    align-items: center;
-
+   z-index: 9999;
 }
 
 .blue{
@@ -191,11 +191,11 @@ footer {
   border        : 2px solid #19b5d1;    /* 枠の指定 */
 }
 .btn_blue:hover {
-  box-shadow    : none;       
-  color         : #19b5d1;     
+  box-shadow    : none;
+  color         : #19b5d1;
   background-color: white;
 }
- 
+
 
 .btn_green{
   display       : inline-block;
@@ -211,8 +211,8 @@ footer {
   border        : 2px solid #17c671;    /* 枠の指定 */
 }
 .btn_green:hover {
-  box-shadow    : none;       
-  color         : #17c671;     
+  box-shadow    : none;
+  color         : #17c671;
   background-color: white;
 }
 
