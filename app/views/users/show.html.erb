@@ -43,11 +43,11 @@
 
     <div class="tabbox-contents">
       <div class="tabbox box-show">
-        <% current_user.posts.each do |user_post| %>
-          <%= link_to post_path(user_post) do %>
-            <%= user_post.title %>
-          <% end %>
-        <% end %>
+        <div class="posts_box xy_center">
+          <ul class="cards7">
+            <%= render partial: 'posts/posts', collection: current_user.posts, as: :post %>
+          </ul>
+        </div>
       </div>
       <div class="tabbox">
         <%= link_to "投稿2", root_path %>
