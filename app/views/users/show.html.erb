@@ -1,4 +1,4 @@
-<div class="user_show xy_center">
+<div class="box_margin xy_center">
   <div class="text_right">
     <%= link_to "変更する", edit_user_path(@user) , class: "border_btn" if current_user.id.to_s == params[:id] %>
   </div>
@@ -43,7 +43,11 @@
 
     <div class="tabbox-contents">
       <div class="tabbox box-show">
-        <%= link_to "投稿", root_path %>
+        <% current_user.posts.each do |user_post| %>
+          <%= link_to post_path(user_post) do %>
+            <%= user_post.title %>
+          <% end %>
+        <% end %>
       </div>
       <div class="tabbox">
         <%= link_to "投稿2", root_path %>
