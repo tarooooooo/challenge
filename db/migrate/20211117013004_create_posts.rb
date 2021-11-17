@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :limit, default: 0, null: false
       t.references :genre, foreign_key: true, null: false
       t.references :user, foreign_key: true, null: false
+      t.boolean :deleted, default: false, null: false
 
       t.timestamps
     end
