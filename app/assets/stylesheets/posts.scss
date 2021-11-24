@@ -275,6 +275,17 @@ li.card7 {
   text-align: center;
 }
 
+.post_edit_btn{
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+  width: auto;
+  text-align: center;
+}
+
 .flex{
   display: flex;
 }
@@ -303,3 +314,4 @@ li.card7 {
 .body{
     margin: 50px;
 }
+

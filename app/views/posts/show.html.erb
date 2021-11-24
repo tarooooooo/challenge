@@ -4,6 +4,8 @@
       <img class="genre_image" src="/assets/<%= @post.genre.image_id %>"  alt="アイキャッチ画像">
       <p class="title_text"><%= @post.title %></p>
       <p class="title_text_s">人数：１ / <%= @post.limit.to_s %> 人</p>
+      
+      <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn" if current_user == @post.user %>
     </div>
     <div class="flex">
       <div class="left_box flow_item right_border">
@@ -22,7 +24,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="body">
       <p class >【お約束の内容】</p>
       <p class="post_body">
