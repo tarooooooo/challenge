@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where('meeting_at >= ?', Time.now).order(meeting_at: :desc)
   end
   
   def show
@@ -32,10 +32,27 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    
+    if @post.update(post_params)
+      flash[:success] = "編集が完了しました。"
+      redirect_to post_path(@post.id)
+    else
+      flash[:danger] = "保存が失敗しました。"
+      render"new"
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
+    
+    if @post.destroy
+      flash[:success] = "削除が完了しました。"
+      redirect_to posts_path
+    else
+       flash[:danger] = "削除できませんした。"
+      render :edit
+    end
+    
   end
   
   private

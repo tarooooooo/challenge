@@ -1,63 +1,35 @@
-<div class="box_margin xy_center">
-  <div class="text_right">
-    <%= link_to "変更する", edit_user_path(@user) , class: "border_btn" if current_user.id.to_s == params[:id] %>
-  </div>
-  <!--アイコン画像-->
-  <div class="circle_img text-center ">
-    <% if !current_user.icon_image_id.blank? %>
-      <img src="/user_images/<%= @user.icon_image_id %>" width="200px" />
-    <% else %>
-      <img src="/user_images/no_image.jpg" width="200px" />
-    <% end %>
-  </div>
-
-  <!--名前-->
-  <p class="xy_center">
-    <%= current_user.nickname %>さん
-  </p>
-
-  <div class="row btn pb_30px">
-    <%= link_to "フォロー" , root_path %>
-    <%= link_to "フォロワー" , root_path %>
-  </div>
-
-  <div class="box border_bottom border_top text_left">
-    <p>【自己紹介】</p>
-    <%= @user.introduction %>
-  </div>
-
-  <% if params[:id] == current_user.id.to_s %>
-
-    <div class="tab-list list-unstyled row">
-      <p class="tab tab-active">
-        これからの約束
-      </p>
-      <p class="tab">
-        これまでの約束
-      </p>
-      <p class="tab">
-        いいねした約束
-      </p>
+<div class="post_show">
+  <div class="box">
+    <div class="bg-image">
+      <img class="genre_image" src="/assets/<%= @post.genre.image_id %>"  alt="アイキャッチ画像">
+      <p class="title_text"><%= @post.title %></p>
+      <p class="title_text_s">人数：１ / <%= @post.limit.to_s %> 人</p>
+      
+      <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn" if current_user == @post.user %>
     </div>
-
-
-    <div class="tabbox-contents">
-      <div class="tabbox box-show">
-        <div class="posts_box xy_center">
-          <ul class="cards7">
-            <%= render partial: 'posts/posts', collection: current_user.posts, as: :post %>
-          </ul>
+    <div class="flex">
+      <div class="left_box flow_item right_border">
+        <p>お約束の時間</p>
+        <p class="time_lg"><%= @post.meeting_at.strftime("%H:%M") %>〜</p>
+      </div>
+      <div class="right_box flow_item flex">
+        <div class="left_box flow_item user_box">
+          <p>主催者：<%= @post.user.nickname %>さん</p>
+          <div class="circle_img_s text-center ">
+            <img src="/user_images/<%= @post.user.icon_image_id %>" width="50px" />
+          </div>
+        </div>
+        <div class="right_box flow_item">
+          <p>ユーザーのイメージ画像</p>
         </div>
       </div>
-      <div class="tabbox">
-        <%= link_to "投稿2", root_path %>
-      </div>
-      <div class="tabbox">
-        <%= link_to "投稿3", root_path %>
-      </div>
-
     </div>
 
-  <% end %>
-
+    <div class="body">
+      <p class >【お約束の内容】</p>
+      <p class="post_body">
+        <%= @post.body %>
+      </p_>
+    </div>
+  </div>
 </div>
