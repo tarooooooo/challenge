@@ -3,10 +3,27 @@
     <div class="bg-image">
       <img class="genre_image" src="/assets/<%= @post.genre.image_id %>"  alt="アイキャッチ画像">
       <p class="title_text"><%= @post.title %></p>
-      <p class="title_text_s">人数：１ / <%= @post.limit.to_s %> 人</p>
+        <% if @post.room.present? %>
+          <p class="title_text_s">
+            <%= @post.room.users.count.to_s %> / <%= @post.limit.to_s %> 人
+          </p>
+        <% else %>
+          <p class="title_text_s">
+            0 / <%= @post.limit.to_s %> 人
+          </p>
+        <% end %>
       
-      <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn" if current_user == @post.user %>
+      <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn"  %>
     </div>
+    <% if @post.user == current_user && @post.room.nil? %>
+      <%= link_to "Roomを開く", post_rooms_path(@post), method: :post %>
+    <% elsif @post.user != current_user && @post.room.present? && @post.room.users.exclude?(current_user) %>
+      <%= link_to "参加する", join_room_path(@post.room) unless @post.room.nil? %>
+    <% elsif @post.user != current_user && @post.room.nil? %>
+      <p>ルームは開かれていません。</p>
+    <% else %>
+      <%= link_to "Room", room_path(@post.room) %>
+    <% end %>
     <div class="flex">
       <div class="left_box flow_item right_border">
         <p>お約束の時間</p>
@@ -29,7 +46,7 @@
       <p class >【お約束の内容】</p>
       <p class="post_body">
         <%= @post.body %>
-      </p_>
+      </p>
     </div>
   </div>
 </div>
