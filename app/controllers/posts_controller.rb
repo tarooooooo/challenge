@@ -6,10 +6,15 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = current_user
+    
+    @room = Room.new
+    @room.users << current_user
   end
 
   def new
     @post = Post.new
+    @room = Room.new
+    @room.users << current_user
   end
 
   def create
@@ -17,7 +22,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      flash[:success] = "約束の投稿が完了しました。"
+      flash.now[:success] = "約束の投稿が完了しました。"
       redirect_to post_path(@post.id)
     else
        flash[:danger] = "約束の投稿を、失敗しました。"
