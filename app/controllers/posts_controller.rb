@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where('meeting_at >= ?', Time.now).order(meeting_at: :desc)
   end
   
   def show
