@@ -35,6 +35,13 @@ class RoomsController < ApplicationController
       redirect_to post_path(@room.post)
     end
   end
+  
+  def show
+    @room = Room.find(params[:id])
+    @message = Message.new
+    # メッセージ相手を抽出
+    @another_entry = @room.entries.find_by('user_id != ?', current_user.id)
+  end
 
   private
 

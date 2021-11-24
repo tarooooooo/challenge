@@ -1,0 +1,41 @@
+
+<div id="chats">
+  <% @room.messages.each do |message|%>
+    <%if message.user_id==current_user.id %>
+      <div class="mycomment">
+        <p><%= message.content %></p>
+        <div class="faceicon circle_img_ss text-center">
+          <img src="/user_images/<%= message.user.icon_image_id %>" width="50px" />
+        </div>
+      </div>
+    <%else%>
+      <div class="fukidasi">
+        <div class="faceicon circle_img_ss text-center">
+          <img src="/user_images/<%= message.user.icon_image_id %>" width="50px" />
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p><%= message.content %></p>
+          <p class ="message_user_name">
+            投稿者：<%= message.user.nickname %>さん
+          </p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>
+<div class="message-form">
+  <%= form_with model: @message, url: messages_path, local: true do |f| %>
+    <div class="form-group">
+        <%= f.text_field :content %>
+    </div>
+    <div class="form-group">
+        <%= f.hidden_field :room_id , value: @room.id %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "送信" %>
+    </div>
+  <% end %>
+</div>
+

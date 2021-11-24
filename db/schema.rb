@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_034521) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id", "room_id"], name: "index_entries_on_user_id_and_room_id", unique: true
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 

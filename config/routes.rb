@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :rooms, only: [:create]
   end
+  
+  resources :messages, only: [:create, :destroy]
 end
