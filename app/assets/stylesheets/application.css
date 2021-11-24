@@ -185,6 +185,25 @@ footer {
   padding: 12px;
 }
 
+.btn_danger{
+  display       : inline-block;
+  border-radius: 100vh;
+  font-size     : 14pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  color         :  red;     /* 文字色     */
+  background-color: white;
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .2s;         /* なめらか変化 */
+  border        : 2px solid red;    /* 枠の指定 */
+}
+.btn_danger:hover {
+  box-shadow    : none;
+  color         : red;
+  background-color: white;
+}
+
  .btn_blue{
   display       : inline-block;
   border-radius: 100vh;

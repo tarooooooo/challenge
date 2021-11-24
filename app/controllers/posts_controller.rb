@@ -37,15 +37,22 @@ class PostsController < ApplicationController
       flash[:success] = "編集が完了しました。"
       redirect_to post_path(@post.id)
     else
-       flash[:danger] = "保存が失敗しました。"
-       render"new"
+      flash[:danger] = "保存が失敗しました。"
+      render"new"
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    
+    if @post.destroy
+      flash[:success] = "削除が完了しました。"
+      redirect_to posts_path
+    else
+       flash[:danger] = "削除できませんした。"
+      render :edit
+    end
+    
   end
   
   private
