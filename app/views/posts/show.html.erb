@@ -12,18 +12,10 @@
             0 / <%= @post.limit.to_s %> 人
           </p>
         <% end %>
-      
+
       <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn"  %>
     </div>
-    <% if @post.user == current_user && @post.room.nil? %>
-      <%= link_to "Roomを開く", post_rooms_path(@post), method: :post %>
-    <% elsif @post.user != current_user && @post.room.present? && @post.room.users.exclude?(current_user) %>
-      <%= link_to "参加する", join_room_path(@post.room) unless @post.room.nil? %>
-    <% elsif @post.user != current_user && @post.room.nil? %>
-      <p>ルームは開かれていません。</p>
-    <% else %>
-      <%= link_to "Room", room_path(@post.room) %>
-    <% end %>
+
     <div class="flex">
       <div class="left_box flow_item right_border">
         <p>お約束の時間</p>
@@ -40,6 +32,18 @@
           <p>ユーザーのイメージ画像</p>
         </div>
       </div>
+    </div>
+
+    <div class="post_show_btn">
+      <% if @post.user == current_user && @post.room.nil? %>
+        <%= link_to "Roomを開く", post_rooms_path(@post), method: :post, class:"btn_green post_show_btn"%>
+      <% elsif @post.user != current_user && @post.room.present? && @post.room.users.exclude?(current_user) %>
+        <%= link_to "参加する", join_room_path(@post.room), class:"btn_blue"%>
+      <% elsif @post.user != current_user && @post.room.nil? %>
+        <p>ルームは開かれていません。</p>
+      <% else %>
+        <%= link_to "Room", room_path(@post.room), class:"btn_yellow"%>
+      <% end %>
     </div>
 
     <div class="body">
