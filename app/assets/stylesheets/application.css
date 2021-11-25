@@ -230,16 +230,16 @@ footer {
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 12px 12px;   /* 余白       */
-  color         :  #19b5d1;     /* 文字色     */
+  color         :  #00008b;     /* 文字色     */
   background-color: white;
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .2s;         /* なめらか変化 */
-  border        : 2px solid yellow;    /* 枠の指定 */
+  border        : 2px solid #00008b;    /* 枠の指定 */
 }
 .btn_yelow:hover {
   box-shadow    : none;
-  color         : #19b5d1;
-  background-color: white;
+  color         : white;
+  background-color: #00008b;
 }
 
 

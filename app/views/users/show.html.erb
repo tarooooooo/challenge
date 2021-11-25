@@ -20,6 +20,14 @@
     <%= link_to "フォロー" , root_path %>
     <%= link_to "フォロワー" , root_path %>
   </div>
+  
+  <div class="tags_box">
+    <% @tags.each do |tag| %>
+    <p class ="tag">
+      <%= tag.name %>
+    </p>
+    <% end %>
+  </div>
 
   <div class="box border_bottom border_top text_left">
     <p>【自己紹介】</p>
