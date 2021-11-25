@@ -15,4 +15,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
+  has_many :tag_relationships, dependent: :destroy
+  has_many :tags, through: :tag_relationships
+  accepts_nested_attributes_for :tag_relationships, allow_destroy: true
 end

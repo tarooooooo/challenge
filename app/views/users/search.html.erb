@@ -1,0 +1,52 @@
+<div class="search">
+
+  <div class="tags_box">
+    <p class"tag_name_search">タグ名で検索</p>
+    <div class="tag_center">
+      <div class="tag_flex">
+        <% @tags.each do |tag| %>
+        <p class ="tag_link">
+          <%= link_to search_users_path(tag_name: tag.name) do %>
+            <%= tag.name %>
+          <% end %>
+        </p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="recommendation_users">
+    <p class="users_title"><%= @tag.name %>をタグ付けしているユーザー</p>
+    <div class="users">
+      <div class="flex">
+      <% @users.each do |user| %>
+          <div class="user_card">
+            <%= link_to user_path(user) do %>
+              <div class="circle_img text-center ">
+                <% if !current_user.icon_image_id.blank? %>
+                  <img src="/user_images/<%= user.icon_image_id %>" width="200px" />
+                <% else %>
+                  <img src="/user_images/no_image.jpg" width="200px" />
+                <% end %>
+              </div>
+              <!--名前-->
+              <p class="xy_center">
+                <%= user.nickname %>さん
+              </p>
+            <% end %>
+            <div class="tag_flex_s">
+              <% user.tags.each do |tag| %>
+              <p class ="tag_link_s">
+                <%= link_to users_path(tag_name: tag.name) do %>
+                  <%= tag.name %>
+                <% end %>
+              </p>
+            <% end %>
+            </div>
+          </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

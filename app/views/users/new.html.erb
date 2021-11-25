@@ -19,6 +19,21 @@
       <%= f.label :紹介文%><br />
       <%= f.text_area :introduction, autofocus: true %>
     </div>
+    
+    <div class="tags">
+      <div class="tag-group">
+        <%= f.label :タグ, class: 'col-form-label' %>
+      </div>
+      <div class="tag-group tag-select-comment">
+        <p>※関連するタグを選択してください（複数選択可）</p>
+      </div>
+      <div class="tag-group">
+        <%= collection_check_boxes(:user, :tag_ids, Tag.all, :id, :name ) do |t|  %>
+          <% t.label { t.check_box + t.text } %>
+        <% end %>
+      </div>
+    </div>
+
 
 
     <div class="field">
