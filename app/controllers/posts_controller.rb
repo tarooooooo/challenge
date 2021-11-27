@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     
     @room = Room.new
     @room.users << current_user
+    @meeting_at = @post.meeting_at
   end
 
   def new

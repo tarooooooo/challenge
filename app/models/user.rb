@@ -17,5 +17,13 @@ class User < ApplicationRecord
   has_many :rooms, through: :entries
   has_many :tag_relationships, dependent: :destroy
   has_many :tags, through: :tag_relationships
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   accepts_nested_attributes_for :tag_relationships, allow_destroy: true
+  
+  
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
+
 end

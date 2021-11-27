@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
   end
   resources :posts do
+    resource :like, only: [:create, :destroy]
     resources :rooms, only: [:create]
   end
   

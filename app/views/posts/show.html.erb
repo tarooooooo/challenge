@@ -14,12 +14,20 @@
         <% end %>
 
       <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn"  %>
+      
+     <div class="post_like_btn border_btn">
+        <div id="likes_buttons_<%= @post.id %>">
+          いいね ：
+          <%= render 'likes/like', post: @post %>
+        </div>
+      </div>
     </div>
 
     <div class="flex">
       <div class="left_box flow_item right_border">
         <p>お約束の時間</p>
-        <p class="time_lg"><%= @post.meeting_at.strftime("%H:%M") %>〜</p>
+        <p><%= @meeting_at.strftime("%Y年%m月%d日") %></p>
+        <p class="time_lg"><%= @meeting_at.strftime("%H:%M") %>〜</p>
       </div>
       <div class="right_box flow_item flex">
         <div class="left_box flow_item user_box">

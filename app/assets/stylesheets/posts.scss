@@ -278,12 +278,27 @@ li.card7 {
 .post_edit_btn{
   position: absolute;
   top: 20%;
-  right: 5%;
+  right: -3%;
   transform: translate(-50%, -50%);
   color: #fff;
   font-size: 20px;
-  width: auto;
+  width: 160px;
   text-align: center;
+}
+
+.post_like_btn{
+  position: absolute;
+  top: 40%;
+  right: -3%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+  width: 160px;
+  text-align: center;
+}
+
+#likes_buttons_3 a{
+  color: #fff;
 }
 
 .flex{

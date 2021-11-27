@@ -1,5 +1,11 @@
-
 <div id="chats">
+  <div class="by_time_box">
+    <% if @meeting_at > Time.current %>
+      <p>お約束の時間まで、あと<%= @by_time %>です！</p>
+    <% elsif @meeting_at <= Time.current %>
+      <p>お約束の内容を実行してください！</p>
+    <% end %>
+  </div>
   <% @room.messages.each do |message|%>
     <%if message.user_id==current_user.id %>
       <div class="mycomment">
@@ -24,6 +30,7 @@
       </div>
     <%end%>
   <%end%>
+
 </div>
 <div class="message-form">
   <%= form_with model: @message, url: messages_path, local: true do |f| %>
