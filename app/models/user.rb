@@ -19,11 +19,27 @@ class User < ApplicationRecord
   has_many :tags, through: :tag_relationships
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
   accepts_nested_attributes_for :tag_relationships, allow_destroy: true
   
   
   def already_liked?(post)
     self.likes.exists?(post_id: post.id)
+  end
+  
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
   end
 
 end

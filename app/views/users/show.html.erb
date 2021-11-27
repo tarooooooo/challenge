@@ -1,7 +1,16 @@
 <div class="box_margin xy_center">
-  <div class="text_right">
+  <div class="text_right edit_btn">
     <%= link_to "変更する", edit_user_path(@user) , class: "border_btn" if current_user.id.to_s == params[:id] %>
   </div>
+  <% unless @user == current_user %>
+    <div class="text_right">
+      <% if current_user.following?(@user) %>
+        <%= link_to "フォロー中", user_relationships_path(@user.id), class: "border_btn", method: :delete %>
+      <% else %>
+        <%= link_to "フォローする", user_relationships_path(@user.id), class: "border_btn" , method: :post %>
+      <% end %>
+    </div>
+  <% end %>
   <!--アイコン画像-->
   <div class="circle_img text-center ">
     <% if !current_user.icon_image_id.blank? %>
@@ -17,10 +26,14 @@
   </p>
 
   <div class="row btn pb_30px">
-    <%= link_to "フォロー" , root_path %>
-    <%= link_to "フォロワー" , root_path %>
+    <%= link_to user_followings_path(current_user) do %>
+      <p><%= @user.followings.count %>フォロー中</p>
+    <% end %>
+    <%= link_to user_followers_path(current_user)do %>
+      <p><%= @user.followers.count %>フォロワー</p>
+    <% end %>
   </div>
-  
+
   <div class="tags_box">
     <% @tags.each do |tag| %>
     <p class ="tag">
