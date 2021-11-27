@@ -8,42 +8,38 @@
         <div class="social">
           <%= link_to '予定を作る', new_post_path, class: 'blue' %>
         </div>
-        
+
         <div class="social">
           <%= link_to '予定を探す', posts_path, class: 'blue' %>
         </div>
-        
+
         <div class="social">
           <%= link_to 'ユーザー検索', users_path, class:'blue'%>
         </div>
-        
+
         <div class="social">
           <%= link_to 'マイページ', user_path(current_user), class: 'blue' %>
         </div>
-        
-        <div class="social">
-          <%= link_to '通知', root_path, class: 'blue' %>
-        </div>
-        
+
         <div class="social">
           <%= link_to 'ログアウト', logout_path, method: :delete, class: 'blue' %>
         </div>
-        
+
       <% else %>
-      
+
         <div class="social">
           <%= link_to 'About', root_path, class: 'blue' %>
         </div>
-      
-     
+
+
         <div class="social">
           <%= link_to '新規登録', new_user_path, class: 'blue' %>
         </div>
-  
+
         <div class="social">
           <%= link_to 'ログイン', login_path, class: 'blue' %>
         </div>
-        
+
       <% end %>
     </div>
   </nav>
