@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'orders/create'
   get 'relationships/followings'
   get 'relationships/followers'
   get 'homes/top'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
+  
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
@@ -27,7 +28,15 @@ Rails.application.routes.draw do
   resources :posts do
     resource :like, only: [:create, :destroy]
     resources :rooms, only: [:create]
+    resource :order, only: [:new]
   end
   
   resources :messages, only: [:create, :destroy]
+  resources :orders, only: [:create] do
+    member do
+      get :finish
+      get :confirm
+    end
+  end
+  
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  g: MyString
+  model: MyString
+  PayPost: MyString
+  post: one
+  price: MyString
+
+two:
+  g: MyString
+  model: MyString
+  PayPost: MyString
+  post: two
+  price: MyString

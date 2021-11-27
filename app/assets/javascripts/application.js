@@ -75,3 +75,12 @@ $(document).on('turbolinks:load', function() {
 
   });
 });
+
+$(function(){
+  $('.section').hide();
+
+  $('.secList').on('click',function(){
+    $('.section').not($($(this).attr('href'))).hide();
+    $($(this).attr('href')).fadeToggle(1000);
+  });
+});

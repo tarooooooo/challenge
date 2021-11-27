@@ -3,6 +3,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @not_image = "no_image.jpg"
     @tags = @user.tags
+
+    @rooms = @user.rooms
+    @like_posts = current_user.liked_posts
+    @before_posts =[]
+    @after_posts = []
+    @rooms.each do |room|
+      @before_posts << room.post if room.post.meeting_at > Time.current
+      @after_posts << room.post if room.post.meeting_at <= Time.current
+    end
   end
 
   def new

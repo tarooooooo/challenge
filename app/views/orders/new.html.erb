@@ -1,0 +1,52 @@
+<div class="post_show">
+  <div class="box">
+    <div class="order">
+      <h1>【購入確認】</h1>
+      <table>
+         <tr>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+        </tr>
+         <tr>
+          <th>価格</th>
+          <td><%= @post.pay_post.price %>円</td>
+        </tr>
+         <tr>
+          <th>現在の参加人数/制限人数</th>
+          <td>
+            <% if @post.room.present? %>
+              <%= @post.room.users.count.to_s %> / <%= @post.limit.to_s %> 人
+            <% else %>
+               0 / <%= @post.limit.to_s %> 人
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>日程</th>
+          <td><%= @post.meeting_at.strftime("%Y年%m月%d日") %></td>
+        </tr>
+        <tr>
+          <th>時間</th>
+          <td><%= @post.meeting_at.strftime("%H:%M") %>〜</td>
+        </tr>
+        <tr>
+          <th>開催者</th>
+          <td><%= @post.user.nickname %>さん</td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td> <%= @post.body %></td>
+        </tr>
+      </table>
+    </div>
+    <%= form_with model: @order, method: :post, local:true do |f| %>
+      <%= f.hidden_field :seller_id, :value => @post.user.id %>
+      <%= f.hidden_field :buyer_id, :value => current_user.id %>
+      <%= f.hidden_field :order_price, :value => @post.pay_post.price %>
+      <%= f.hidden_field :post_id, :value => @post.id%>
+      <div class="order_btn">
+        <%= f.submit '購入確定', class: "btn btn-info btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

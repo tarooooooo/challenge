@@ -1,34 +1,45 @@
 <div class="box_margin xy_center">
   <div class="title">約束をつくる</div>
   <div class="field_box">
-  
+
     <%= form_with model: @post, local: true do |f| %>
 
       <div class="field">
         <%= f.label :【タイトル】 %><br/>
         <%= f.text_field :title %>
       </div>
-  
+
       <div class="field">
         <%= f.label :【説明】 %><br />
         <%= f.text_area :body, autofocus: true, style:"width: 300px;" %>
       </div>
-  
+
       <div class="field">
         <%= f.label :【約束の時間】%><br />
         <%= f.datetime_field :meeting_at, autofocus: true %>
       </div>
-  
+
       <div class="field">
         <%= f.label :【制限人数】%><br />
         <%= f.select :limit, options_for_select((1..20).to_a), {:prompt => true}, {:class => "form-control"} %>
       </div>
-  
+
       <div class="field">
         <%= f.label :【ジャンル】%><br />
         <%= f.collection_select :genre_id, Genre.all, :id, :name,{:prompt => true}, {:class => "form-control"} %>
       </div>
-  
+
+      <div class="et_pb_module">
+        <a href="#fuu" class='secList'>有料で投稿する場合は、こちらをクリックし価格を入力してください。</a>
+      </div>
+
+      <%= f.fields_for :pay_post do |ff| %>
+        <div class="field section">
+          <%= ff.label :price %><br>
+          <%= ff.text_field :price %>円
+        </div>
+      <% end %>
+
       <div class="mt_30px">
         <%= f.submit "保存", class:"btn_green" %>
       </div>

@@ -1,0 +1,78 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order{
+  padding: 100px;
+  text-align: left;
+
+  h1 {
+    text-align: center;
+    padding-bottom: 15px;
+  }
+
+  table {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+    border-collapse:  collapse; /* セルの線を重ねる */
+    justify-content: center;
+  }
+
+  tr:nth-child(odd) {
+      background-color:  #ddd;    /* 背景色指定 */
+  }
+
+  th,td {
+      padding: 5px 10px;          /* 余白指定 */
+  }
+}
+
+.order_btn{
+  text-align: center;
+  input {
+    display       : inline-block;
+    border-radius : 20px;
+    font-size     : 18pt;
+    text-align    : center;
+    cursor        : pointer;
+    padding       : 11px 12px;
+    background    : #999999;
+    color         : #ffffff;
+    line-height   : 1em;
+    transition    : .3s;
+    border        : 2px solid #999999;
+  }
+  input:hover {
+    color         : #999999;
+    background    : #ffffff;
+  }
+}
+
+.finish_title{
+  text-align: center;
+}
+
+.finish_comment{
+  text-align: center;
+}
+
+.btn07 a {
+	background-color: #19b5d1;
+	border: 1px solid white;
+	color: white;
+}
+
+.btn07 a:hover {
+	background-color: white;
+	border: 1px solid #19b5d1;
+	color: #19b5d1;
+}
+
+.btn07 a:hover::before {
+	border: 1px solid #19b5d1;
+}
+
+.btn07 a:hover::after {
+	border-color: #19b5d1 #19b5d1 transparent transparent;
+}

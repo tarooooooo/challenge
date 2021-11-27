@@ -3,11 +3,11 @@
     <%= link_to "変更する", edit_user_path(@user) , class: "border_btn" if current_user.id.to_s == params[:id] %>
   </div>
   <% unless @user == current_user %>
-    <div class="text_right">
+    <div class="text_right follow_link">
       <% if current_user.following?(@user) %>
-        <%= link_to "フォロー中", user_relationships_path(@user.id), class: "border_btn", method: :delete %>
+        <%= link_to "フォロー中", user_relationships_path(@user.id), class: "border_btn follow_link", method: :delete %>
       <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user.id), class: "border_btn" , method: :post %>
+        <%= link_to "フォローする", user_relationships_path(@user.id), class: "border_btn follow_link" , method: :post %>
       <% end %>
     </div>
   <% end %>
@@ -24,14 +24,15 @@
   <p class="xy_center">
     <%= current_user.nickname %>さん
   </p>
-
-  <div class="row btn pb_30px">
-    <%= link_to user_followings_path(current_user) do %>
-      <p><%= @user.followings.count %>フォロー中</p>
-    <% end %>
-    <%= link_to user_followers_path(current_user)do %>
-      <p><%= @user.followers.count %>フォロワー</p>
-    <% end %>
+  <div class="follow_box">
+    <div class="row btn pb_30px">
+      <%= link_to user_followings_path(current_user) do %>
+        <p class="follow_p"><%= @user.followings.count %>フォロー中</p>
+      <% end %>
+      <%= link_to user_followers_path(current_user)do %>
+        <p class="follow_p"><%= @user.followers.count %>フォロワー</p>
+      <% end %>
+    </div>
   </div>
 
   <div class="tags_box">
@@ -54,7 +55,7 @@
         これからの約束
       </p>
       <p class="tab">
-        これまでの約束
+        進行中・過去の約束
       </p>
       <p class="tab">
         いいねした約束
@@ -66,15 +67,23 @@
       <div class="tabbox box-show">
         <div class="posts_box xy_center">
           <ul class="cards7">
-            <%= render partial: 'posts/posts', collection: current_user.posts, as: :post %>
+            <%= render partial: 'posts/posts', collection: @before_posts, as: :post %>
           </ul>
         </div>
       </div>
       <div class="tabbox">
-        <%= link_to "投稿2", root_path %>
+        <div class="posts_box xy_center">
+          <ul class="cards7">
+            <%= render partial: 'posts/posts', collection: @after_posts, as: :post %>
+          </ul>
+        </div>
       </div>
       <div class="tabbox">
-        <%= link_to "投稿3", root_path %>
+        <div class="posts_box xy_center">
+          <ul class="cards7">
+            <%= render partial: 'posts/posts', collection: @like_posts, as: :post %>
+          </ul>
+        </div>
       </div>
 
     </div>

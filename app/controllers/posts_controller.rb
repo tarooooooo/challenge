@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where('meeting_at >= ?', Time.now).order(meeting_at: :desc)
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @user = current_user
-    
+
     @room = Room.new
     @room.users << current_user
     @meeting_at = @post.meeting_at
@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.build_pay_post
     @room = Room.new
     @room.users << current_user
   end
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
        flash[:danger] = "約束の投稿を、失敗しました。"
        render"new"
     end
-    
+
   end
 
   def edit
@@ -38,7 +39,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    
+
     if @post.update(post_params)
       flash[:success] = "編集が完了しました。"
       redirect_to post_path(@post.id)
@@ -50,7 +51,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    
+
     if @post.destroy
       flash[:success] = "削除が完了しました。"
       redirect_to posts_path
@@ -58,11 +59,11 @@ class PostsController < ApplicationController
        flash[:danger] = "削除できませんした。"
       render :edit
     end
-    
+
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(
       :title,
@@ -70,7 +71,8 @@ class PostsController < ApplicationController
       :meeting_at,
       :limit,
       :genre_id,
-      :user_id
+      :user_id,
+      pay_post_attributes: [:id, :price, :_destroy]
       )
   end
 end

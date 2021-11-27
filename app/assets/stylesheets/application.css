@@ -28,7 +28,7 @@ body {
 }
 
  p{
-   font-size: 20px;   
+   font-size: 20px;
 }
 
 a {
@@ -299,3 +299,21 @@ textarea {
   height:200px;
 }
 
+.btn a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 300px;
+	height: 60px;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: none;
+	transition: 0.3s;
+	margin: 20px auto;
+}
+
+.btn a:hover {
+	color: #19b5d1;
+}

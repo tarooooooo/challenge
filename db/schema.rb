@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_054145) do
+ActiveRecord::Schema.define(version: 2021_11_27_095225) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(version: 2021_11_27_054145) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "buyer_id", null: false
+    t.integer "seller_id", null: false
+    t.integer "post_id", null: false
+    t.string "order_price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pay_posts", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_pay_posts_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|

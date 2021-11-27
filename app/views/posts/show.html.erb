@@ -12,9 +12,13 @@
             0 / <%= @post.limit.to_s %> 人
           </p>
         <% end %>
+      <% if @post.pay_post.price.present? %>
+        <p class="pay_post">有料</p>
+      <% end %>
+      <% if @post.user == current_user %>
+        <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn" %>
+      <% end %>
 
-      <%= link_to "編集する", edit_post_path(@post), class:"border_btn post_edit_btn"  %>
-      
      <div class="post_like_btn border_btn">
         <div id="likes_buttons_<%= @post.id %>">
           <%= render 'likes/like', post: @post %>
@@ -30,26 +34,47 @@
       </div>
       <div class="right_box flow_item flex">
         <div class="left_box flow_item user_box">
-          <p>主催者：<%= @post.user.nickname %>さん</p>
-          <div class="circle_img_s text-center ">
-            <img src="/user_images/<%= @post.user.icon_image_id %>" width="50px" />
-          </div>
+          <%= link_to user_path(@post.user) do %>
+            <p>主催者：<%= @post.user.nickname %>さん</p>
+            <div class="circle_img_s text-center ">
+              <img src="/user_images/<%= @post.user.icon_image_id %>" width="50px" />
+            </div>
+          <% end %>
         </div>
         <div class="right_box flow_item">
-          <p>ユーザーのイメージ画像</p>
+          <p>参加者：</p>
+          <div class="users_box_flex">
+            <% @post.room.users.each do |user| %>
+              <div class="users_box">
+                <p><%= user.nickname %>さん</p>
+                <div class="circle_img_ss text-center ">
+                  <img src="/user_images/<%= user.icon_image_id %>" width="50px" />
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-
     <div class="post_show_btn">
-      <% if @post.user == current_user && @post.room.nil? %>
-        <%= link_to "Roomを開く", post_rooms_path(@post), method: :post, class:"btn_green post_show_btn"%>
-      <% elsif @post.user != current_user && @post.room.present? && @post.room.users.exclude?(current_user) %>
-        <%= link_to "参加する", join_room_path(@post.room), class:"btn_blue"%>
-      <% elsif @post.user != current_user && @post.room.nil? %>
-        <p>ルームは開かれていません。</p>
+      <% if @post.pay_post.price.blank? || @post.user == current_user %>
+          <% if @post.user == current_user && @post.room.nil? %>
+            <%= link_to "Roomを開く", post_rooms_path(@post), method: :post, class:"btn_green post_show_btn"%>
+          <% elsif @post.user != current_user && @post.room.present? && @post.room.users.exclude?(current_user) %>
+            <%= link_to "参加する", join_room_path(@post.room), class:"btn_blue"%>
+          <% elsif @post.user != current_user && @post.room.nil? %>
+            <p>ルームはまだ開かれていません。</p>
+          <% else %>
+            <%= link_to "Roomへ入る", room_path(@post.room), class:"btn_yellow"%>
+          <% end %>
       <% else %>
-        <%= link_to "Room", room_path(@post.room), class:"btn_yellow"%>
+        <% if @post.room.blank? %>
+         <p>ルームはまだ開かれていません。</p>
+        <% elsif @post.room.users.exclude?(current_user) %>
+          <%= link_to "購入する", new_post_order_path(@post), class:"btn_yellow" %>
+        <% else %>
+          <%= link_to "Roomへ入る", room_path(@post.room), class:"btn_yellow"%>
+        <% end %>
       <% end %>
     </div>
 

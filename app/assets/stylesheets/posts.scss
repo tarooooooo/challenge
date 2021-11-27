@@ -297,6 +297,18 @@ li.card7 {
   text-align: center;
 }
 
+.pay_post{
+  position: absolute;
+  top: 20%;
+  left: 9%;
+  transform: translate(-50%, -50%);
+  color: yellow;
+  font-size: 20px;
+  padding: 10px 30px;
+  text-align: center;
+  border: thick double yellow;
+}
+
 .white_btn {
   color: #fff;
 }
@@ -335,3 +347,42 @@ li.card7 {
     text-align: center;
 }
 
+/*全体*/
+.hidden_box {
+    margin: 2em 0;/*前後の余白*/
+    padding: 0;
+}
+
+/*ボタン装飾*/
+.hidden_box label {
+    padding: 15px;
+    font-weight: bold;
+    border: solid 2px black;
+    cursor :pointer;
+}
+
+/*ボタンホバー時*/
+.hidden_box label:hover {
+    background: #efefef;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+    display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}

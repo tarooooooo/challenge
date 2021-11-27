@@ -1,0 +1,74 @@
+<div class="post_show">
+  <div class="box">
+    <div class="order">
+      <h1 class="finish_title">
+        <%= @order.post.title %>を購入しました！
+      </h1>
+      <div class="finish_comment">
+      <p>お約束のお時間になりましたら、以下の約束ページからRoomに参加しましょう！</p>
+      <div class="btn btn07">
+        <%= link_to post_path(@order.post) do %>
+          <%= @order.post.title %>に参加！
+        <% end %>
+      </div>
+      </div>
+      <table>
+         <tr>
+          <th>タイトル</th>
+          <td><%= @order.post.title %></td>
+        </tr>
+         <tr>
+          <th>価格</th>
+          <td><%= @order.post.pay_post.price %>円</td>
+        </tr>
+         <tr>
+          <th>現在の参加人数/制限人数</th>
+          <td>
+            <% if @order.post.room.present? %>
+              <%= @order.post.room.users.count.to_s %> / <%= @order.post.limit.to_s %> 人
+            <% else %>
+               0 / <%= @order.post.limit.to_s %> 人
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>日程</th>
+          <td><%= @order.post.meeting_at.strftime("%Y年%m月%d日") %></td>
+        </tr>
+        <tr>
+          <th>時間</th>
+          <td><%= @order.post.meeting_at.strftime("%H:%M") %>〜</td>
+        </tr>
+        <tr>
+          <th>開催者</th>
+          <td><%= @order.post.user.nickname %>さん</td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td> <%= @order.post.body %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="post_show">
+  <div class="box">
+    <p>
+      <%= @order.post.title %>を購入しました！
+    </p>
+    <table>
+      <th>支払い代金</th>
+      <td><%= @order.order_price%>円</td>
+    </table>
+    <div class="link_box">
+      <p>お約束のお時間になりましたら、以下の約束ページからRoomに参加しましょう！</p>
+      <%= link_to post_path(@order.post) do %>
+        <%= @order.post.title %>に参加！
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
     @entry = Entry.new(user_id: current_user.id, room_id: @room.id)
 
     if @room.post.limit > @room.users.count.to_i
-
+      
       if @entry.save
         flash[:success] = "#{@room.post.title}のチャットに参加しました！"
         redirect_to room_path(@room)
