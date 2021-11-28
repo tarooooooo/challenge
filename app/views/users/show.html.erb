@@ -26,10 +26,10 @@
   </p>
   <div class="follow_box">
     <div class="row btn pb_30px">
-      <%= link_to user_followings_path(current_user) do %>
+      <%= link_to user_followings_path(@user) do %>
         <p class="follow_p"><%= @user.followings.count %>フォロー中</p>
       <% end %>
-      <%= link_to user_followers_path(current_user)do %>
+      <%= link_to user_followers_path(@user)do %>
         <p class="follow_p"><%= @user.followers.count %>フォロワー</p>
       <% end %>
     </div>

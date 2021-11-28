@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :redirect_root, except: :index
 
   def index
-    @posts = Post.where('meeting_at >= ?', Time.now).order(meeting_at: :desc)
+    @posts = Post.where('meeting_at >= ?', Time.now).order(meeting_at: :asc)
   end
 
   def show

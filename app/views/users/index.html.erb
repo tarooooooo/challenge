@@ -17,7 +17,7 @@
     <div class="recommendation_users">
       <p class="users_title">あなたに似ているユーザー</p>
       <div class="users">
-        <div class="flex">
+        <div class="user_flex">
         <% @users.each do |user| %>
             <div class="user_card">
               <%= link_to user_path(user) do %>

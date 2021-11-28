@@ -1,22 +1,32 @@
 <% if users.exists? %>
-  <% users.each do |user| %>
+  <div class="users">
     <table>
       <thead>
         <tr>
+          <th>ユーザー画像</th>
           <th>ニックネーム</th>
-          <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><%= user.nickname %></td>
-          <td>フォロー数: <%= user.followings.count %></td>
-          <td>フォロワー数: <%= user.followers.count %></td>
-        </tr>
+        <% users.each do |user| %>
+          <tr>
+              <td>
+                <div class="circle_img_ss text-center ">
+                  <%= link_to user_path(user) do %>
+                    <%= image_tag("/user_images/#{user.icon_image_id}") %>
+                  <% end %>
+                </div>
+              </td>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <%= user.nickname %>さん
+                <% end %>
+              </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
-  <% end %>
+  </div>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>

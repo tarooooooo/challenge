@@ -18,7 +18,7 @@
   <div class="recommendation_users">
     <p class="users_title"><%= @tag.name %>をタグ付けしているユーザー</p>
     <div class="users">
-      <div class="flex">
+      <div class="user_flex">
       <% @users.each do |user| %>
           <div class="user_card">
             <%= link_to user_path(user) do %>

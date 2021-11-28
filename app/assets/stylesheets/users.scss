@@ -42,3 +42,36 @@
   width: 300px;
   margin: 0 auto;
 }
+
+.user_flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.users{
+  table {
+    border-collapse: separate;  /* 表の線と線の間を空ける */
+    border-spacing:  5px;       /* 表の線と線の間の幅 */
+    margin: 0 auto;
+    padding: 30px;
+  }
+
+  th,td {
+      padding: 5px 100px;          /* 余白指定 */
+  }
+
+  th {
+      background-color:  #afeeee; /* 背景色指定 */
+      font-weight:  normal;       /* 文字の太さ指定 */
+  }
+
+  td {
+      background-color:  #e0ffff; /* 背景色指定 */
+  }
+}
+
+.follow_users{
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 70px;
+}
