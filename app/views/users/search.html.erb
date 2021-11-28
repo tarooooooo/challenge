@@ -24,9 +24,9 @@
             <%= link_to user_path(user) do %>
               <div class="circle_img text-center ">
                 <% if !current_user.icon_image_id.blank? %>
-                  <img src="/user_images/<%= user.icon_image_id %>" width="200px" />
+                  <%= image_tag ("/user_images/#{user.icon_image_id}") %>
                 <% else %>
-                  <img src="/user_images/no_image.jpg" width="200px" />
+                  <%= image_tag ("/user_images/no_image.jpg") %>
                 <% end %>
               </div>
               <!--名前-->

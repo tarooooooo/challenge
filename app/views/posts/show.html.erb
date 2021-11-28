@@ -1,7 +1,9 @@
 <div class="post_show">
   <div class="box">
     <div class="bg-image">
-      <img class="genre_image" src="/assets/<%= @post.genre.image_id %>"  alt="アイキャッチ画像">
+      <div class="genre_image">
+        <%= image_tag asset_path("#{@post.genre.image_id}") %>
+      </div>
       <p class="title_text"><%= @post.title %></p>
         <% if @post.room.present? %>
           <p class="title_text_s">
@@ -37,7 +39,7 @@
           <%= link_to user_path(@post.user) do %>
             <p>主催者：<%= @post.user.nickname %>さん</p>
             <div class="circle_img_s text-center ">
-              <img src="/user_images/<%= @post.user.icon_image_id %>" width="50px" />
+              <%= image_tag("/user_images/#{@post.user.icon_image_id}") %>
             </div>
           <% end %>
         </div>
@@ -51,7 +53,7 @@
                 <div class="users_box">
                   <p><%= user.nickname %>さん</p>
                   <div class="circle_img_ss text-center ">
-                    <img src="/user_images/<%= user.icon_image_id %>" width="50px" />
+                    <%= image_tag("/user_images/#{user.icon_image_id}") %>
                   </div>
                 </div>
               <% end %>
