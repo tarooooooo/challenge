@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+   before_action :redirect_root
 
   def new
     @order = Order.new
@@ -34,6 +35,13 @@ class OrdersController < ApplicationController
   end
 
   private
+  def redirect_root
+    unless logged_in?
+      flash[:success] = "ログインまたは、新規登録を行なってください。"
+      redirect_to root_path
+    end
+  end
+
   def order_params
     params.require(:order).permit(
       :seller_id,

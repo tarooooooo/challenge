@@ -44,13 +44,17 @@
         <div class="right_box flow_item">
           <p>参加者：</p>
           <div class="users_box_flex">
-            <% @post.room.users.each do |user| %>
-              <div class="users_box">
-                <p><%= user.nickname %>さん</p>
-                <div class="circle_img_ss text-center ">
-                  <img src="/user_images/<%= user.icon_image_id %>" width="50px" />
+            <% if @post.room.blank? %>
+              <p>参加者は、いません。</p>
+            <% else %>
+              <% @post.room.users.each do |user| %>
+                <div class="users_box">
+                  <p><%= user.nickname %>さん</p>
+                  <div class="circle_img_ss text-center ">
+                    <img src="/user_images/<%= user.icon_image_id %>" width="50px" />
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           </div>
         </div>

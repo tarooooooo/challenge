@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :redirect_root
 
   def create
     post = Post.find(params[:post_id])
@@ -22,7 +23,7 @@ class RoomsController < ApplicationController
     @entry = Entry.new(user_id: current_user.id, room_id: @room.id)
 
     if @room.post.limit > @room.users.count.to_i
-      
+
       if @entry.save
         flash[:success] = "#{@room.post.title}のチャットに参加しました！"
         redirect_to room_path(@room)
@@ -48,6 +49,12 @@ class RoomsController < ApplicationController
   end
 
   private
+  def redirect_root
+    unless logged_in?
+      flash[:success] = "ログインまたは、新規登録を行なってください。"
+      redirect_to root_path
+    end
+  end
 
   def room_params
     params.require(:room).permit(user_ids: [])

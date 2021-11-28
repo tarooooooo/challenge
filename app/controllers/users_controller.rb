@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :redirect_root, only: [:show, :index, :search, :edit, :update, :destroy]
+
   def show
     @user = User.find(params[:id])
     @not_image = "no_image.jpg"
@@ -82,6 +84,12 @@ class UsersController < ApplicationController
   end
 
   private
+  def redirect_root
+    unless logged_in?
+      flash[:success] = "ログインまたは、新規登録を行なってください。"
+      redirect_to root_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(

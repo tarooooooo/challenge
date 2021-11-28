@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  
+   before_action :redirect_root
+
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
@@ -19,9 +20,15 @@ class MessagesController < ApplicationController
   end
 
   private
+    def redirect_root
+    unless logged_in?
+      flash[:success] = "ログインまたは、新規登録を行なってください。"
+      redirect_to root_path
+    end
+  end
 
     def message_params
       params.require(:message).permit(:room_id, :content)
     end
-    
+
 end

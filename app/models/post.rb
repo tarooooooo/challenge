@@ -10,4 +10,12 @@ class Post < ApplicationRecord
 
   enum is_deleted: { exit: false, not_exit: true }
 
+  with_options presence: true do
+    validates :title, length: { minimum: 1, maximum: 50 }
+    validates :body, length: { minimum: 1, maximum: 3000 }
+    validates :meeting_at
+    validates :limit
+  end
+
+
 end

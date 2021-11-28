@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_action :redirect_root, except: :index
+
   def index
     @posts = Post.where('meeting_at >= ?', Time.now).order(meeting_at: :desc)
   end
@@ -63,6 +66,13 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def redirect_root
+    unless logged_in?
+      flash[:success] = "ログインまたは、新規登録を行なってください。"
+      redirect_to root_path
+    end
+  end
 
   def post_params
     params.require(:post).permit(

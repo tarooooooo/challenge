@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     validates :introduction, length: { maximum: 800 }
   end
-  
+
   has_many :posts
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
@@ -24,12 +24,12 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   accepts_nested_attributes_for :tag_relationships, allow_destroy: true
-  
-  
+
+
   def already_liked?(post)
     self.likes.exists?(post_id: post.id)
   end
-  
+
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
