@@ -25,15 +25,18 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
-    if @post.save
-      flash.now[:success] = "約束の投稿が完了しました。"
-      redirect_to post_path(@post.id)
+    if @post.meeting_at < Time.current
+      flash[:danger] = "約束のお時間は、現時刻以降を、選択してください。"
+      redirect_back(fallback_location: root_path)
     else
-       flash[:danger] = "約束の投稿を、失敗しました。"
-       render"new"
+      if @post.save
+        flash.now[:success] = "約束の投稿が完了しました。"
+        redirect_to post_path(@post.id)
+      else
+         flash[:danger] = "約束の投稿を、失敗しました。"
+         render"new"
+      end
     end
-
   end
 
   def edit
