@@ -1,24 +1,42 @@
-# README
+# yakusoku
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://user-images.githubusercontent.com/75834810/143731800-69d2e9fb-1d9c-4100-8314-2c45ef195c59.mp4
 
-Things you may want to cover:
+## サイト概要
 
-* Ruby version
+### 一日はあっという間！時間を有効しよう！！
+### やるべきことを、yakusokuのアプリユーザーと約束し、なんとなく過ごす時間を無くしましょう！
+以下のような機能を追加し、ユーザー同士がさまざまな約束を行えるサービスとなっています。
+- やるべき内容と実行する時間を投稿し、やるべきことを一緒に行ってくれる仲間を集めます。（約束成立する。）
+- 約束の時間になったら、チャットルームが開かれ、同じ約束をしたユーザー同士でチャットでの会話が可能。
+- 「このチャットを通して、yakusoku」投稿に参加したユーザー同士で、約束したことを実行しているかをリアルタイムでやりとりします。（これにより、約束したことは必ず実行する習慣がつく）
+- 追加の、機能として有料投稿もでき、「プログラミングの質問受付」や「オンラインゲームのクリアを、手伝う」など、スキルを活かした約束を投稿することもできる。
 
-* System dependencies
+### サイトテーマ
+#### 誰かと約束をすることで、計画的な生活をサポートするアプリ
 
-* Configuration
+### テーマを選んだ理由
+新型コロナウイルス感染拡大によって、外出の自粛や在宅ワークが増えた今、「おうち時間」という言葉がよく使われるようになりました。この、おうち時間を有効活用し、自己投資としての学習や、健康のための運動、趣味や家族サービスなど有益な時間の使い方ができれば、より充実した「おうち時間」にすることができるでしょう。しかし、なんとなく時間を過ごしてしまい、「やろうかなぁ」と考えていたことも、結局できていない方も、多いのではないでしょうか。そこで、自分の「やろうかなぁ」と考えていることを、誰かと約束をすることで、「やらなきゃ」に変換できる、「yakusoku」　というアプリを制作しました！
 
-* Database creation
+### ターゲットユーザ
+計画的な生活を送りたい方（学生、社会人、主婦）
 
-* Database initialization
+### 主な利用シーン
+やってみたいけど、1人でやるのはと、躊躇してしまう時
+やるべきことがあるが、重い腰が上がらない時
 
-* How to run the test suite
+## 設計
+- ER図　：
+- https://drive.google.com/file/d/1g1vISywoLxclwOL-Lqjz0Xm0qdkDGQ7G/view?usp=sharing
+- UIflow図：
+- https://cacoo.com/diagrams/hxsEohI1O2brwZbA/0EBFE
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+cOS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 作者
+- 前田龍太郎
