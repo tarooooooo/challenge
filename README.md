@@ -27,15 +27,9 @@ https://user-images.githubusercontent.com/75834810/143731800-69d2e9fb-1d9c-4100-
 
 ## 設計
 - ER図　：
-- https://drive.google.com/file/d/1Qsgk4gDvy_zIwHW_ovvRhD8Gf5bMJDP9/view?usp=sharing
-- UIflow図（ユーザー側）：
-- https://cacoo.com/diagrams/7cIAbyv0oaMHbJsK/7E90A
-- UIflow図（管理者側）：
-- https://cacoo.com/diagrams/7cIAbyv0oaMHbJsK/58B1B
-- アプリケーション詳細設計：
-- https://docs.google.com/spreadsheets/d/1wZsuUOcoYXWnVzIyFpHCI_mLCK-xkDG5BhRWULqONtA/edit?usp=sharing
-- テーブル定義書：
-- https://docs.google.com/spreadsheets/d/1oA_e2LWHEavEOhOcD7i2UBWq1LV1Nrba/edit?usp=sharing&ouid=112847534265417995265&rtpof=true&sd=true
+- https://drive.google.com/file/d/1g1vISywoLxclwOL-Lqjz0Xm0qdkDGQ7G/view?usp=sharing
+- UIflow図：
+- https://cacoo.com/diagrams/hxsEohI1O2brwZbA/0EBFE
 
 ## 開発環境
 cOS：Linux(CentOS)
