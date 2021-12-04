@@ -88,6 +88,32 @@
 
     </div>
 
+  <% else %>
+    <p class="user_post_title"><span class="user_name">「<%= @user.nickname %>さん」</span>の投稿した「yakusoku」</p>
+    <div class="tab-list list-unstyled row">
+      <p class="tab tab-active">
+        これからの約束
+      </p>
+      <p class="tab">
+        進行中・過去の約束
+      </p>
+    </div>
+
+    <div class="tabbox-contents">
+      <div class="tabbox box-show">
+        <div class="posts_box xy_center">
+          <ul class="cards7">
+            <%= render partial: 'posts/posts', collection: @before_posts, as: :post %>
+          </ul>
+        </div>
+      </div>
+      <div class="tabbox">
+        <div class="posts_box xy_center">
+          <ul class="cards7">
+            <%= render partial: 'posts/posts', collection: @after_posts, as: :post %>
+          </ul>
+        </div>
+      </div>
   <% end %>
 
 </div>
